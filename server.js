@@ -29,13 +29,19 @@ app.use('/api/voting', votingRoutes); // Voting routes
 app.use('/api/reset-password', resetPasswordRoutes); // Reset password routes
 app.use('/api/open-voting', openVotingRoutes); // Open voting routes
 
+// // MongoDB connection
+// mongoose.connect(process.env.MONGO_URI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
+// .then(() => console.log('Connected to MongoDB'))
+// .catch(err => console.log('Error connecting to MongoDB:', err));
+
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.log('Error connecting to MongoDB:', err));
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.log('Error connecting to MongoDB:', err));
+
 
 // Serve static assets in production
 // if (process.env.NODE_ENV === 'production') {
